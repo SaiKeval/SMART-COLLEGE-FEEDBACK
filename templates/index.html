@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart College Feedback System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>SMART COLLEGE FEEDBACK SYSTEM</h2>
+</div>
+
+<!-- ✅ FORM START MOVED HERE -->
+<form method="POST" action="/submit_feedback">
+
+<div class="container">
+
+    <!-- STUDENT DETAILS -->
+    <div class="card">
+        <h3>👤 Student Details</h3>
+
+        <label>Name (Optional)</label>
+        <input type="text" name="name" placeholder="Enter your name">
+
+        <label>Roll Number *</label>
+        <input type="text" name="roll" placeholder="Enter roll number" required>
+
+        <label>Department</label>
+        <select name="department">
+            <option>CSE</option>
+            <option>ECE</option>
+            <option>EEE</option>
+            <option>MECH</option>
+            <option>CIVIL</option>
+        </select>
+
+        <label>Year / Semester</label>
+        <select name="year">
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+        </select>
+
+        <label>Section</label>
+        <select name="section">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+
+        <label>Academic Year</label>
+        <input type="text" name="academic_year" value="2025-26" readonly>
+    </div>
+
+    <!-- SUBJECT & FACULTY -->
+    <div class="card">
+        <h3>📘 Subject & Faculty Details</h3>
+
+        <label>Subject Name</label>
+        <input type="text" name="subject" placeholder="Enter subject name">
+
+        <label>Faculty Name</label>
+        <input type="text" name="faculty" placeholder="Enter faculty name">
+    </div>
+
+    <!-- TEACHING EFFECTIVENESS -->
+    <div class="card">
+        <h3>🗣 Teaching Effectiveness</h3>
+
+        <!-- Subject Knowledge -->
+        <div class="rating-group">
+            <span>Subject Knowledge</span>
+            <div class="star-rating">
+                <input type="radio" id="sk5" name="subject_knowledge" value="5"><label for="sk5">★</label>
+                <input type="radio" id="sk4" name="subject_knowledge" value="4"><label for="sk4">★</label>
+                <input type="radio" id="sk3" name="subject_knowledge" value="3"><label for="sk3">★</label>
+                <input type="radio" id="sk2" name="subject_knowledge" value="2"><label for="sk2">★</label>
+                <input type="radio" id="sk1" name="subject_knowledge" value="1"><label for="sk1">★</label>
+            </div>
+        </div>
+
+        <!-- Clarity -->
+        <div class="rating-group">
+            <span>Clarity in Explanation</span>
+            <div class="star-rating">
+                <input type="radio" id="ce5" name="clarity_explanation" value="5"><label for="ce5">★</label>
+                <input type="radio" id="ce4" name="clarity_explanation" value="4"><label for="ce4">★</label>
+                <input type="radio" id="ce3" name="clarity_explanation" value="3"><label for="ce3">★</label>
+                <input type="radio" id="ce2" name="clarity_explanation" value="2"><label for="ce2">★</label>
+                <input type="radio" id="ce1" name="clarity_explanation" value="1"><label for="ce1">★</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLASSROOM INTERACTION -->
+    <div class="card">
+        <h3>🗣 Classroom Interaction</h3>
+
+        <div class="rating-group">
+            <span>Communication Skills</span>
+            <div class="star-rating">
+                <input type="radio" id="cs5" name="communication_skills" value="5"><label for="cs5">★</label>
+                <input type="radio" id="cs4" name="communication_skills" value="4"><label for="cs4">★</label>
+                <input type="radio" id="cs3" name="communication_skills" value="3"><label for="cs3">★</label>
+                <input type="radio" id="cs2" name="communication_skills" value="2"><label for="cs2">★</label>
+                <input type="radio" id="cs1" name="communication_skills" value="1"><label for="cs1">★</label>
+            </div>
+        </div>
+
+        <div class="rating-group">
+            <span>Interaction with Students</span>
+            <div class="star-rating">
+                <input type="radio" id="is5" name="interaction_students" value="5"><label for="is5">★</label>
+                <input type="radio" id="is4" name="interaction_students" value="4"><label for="is4">★</label>
+                <input type="radio" id="is3" name="interaction_students" value="3"><label for="is3">★</label>
+                <input type="radio" id="is2" name="interaction_students" value="2"><label for="is2">★</label>
+                <input type="radio" id="is1" name="interaction_students" value="1"><label for="is1">★</label>
+            </div>
+        </div>
+
+        <div class="rating-group">
+            <span>Approachability & Support</span>
+            <div class="star-rating">
+                <input type="radio" id="as5" name="approachability_support" value="5"><label for="as5">★</label>
+                <input type="radio" id="as4" name="approachability_support" value="4"><label for="as4">★</label>
+                <input type="radio" id="as3" name="approachability_support" value="3"><label for="as3">★</label>
+                <input type="radio" id="as2" name="approachability_support" value="2"><label for="as2">★</label>
+                <input type="radio" id="as1" name="approachability_support" value="1"><label for="as1">★</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFRASTRUCTURE & FACILITIES -->
+<div class="card">
+  <h3>🏫 Infrastructure & Facilities</h3>
+
+  <!-- Classroom Cleanliness -->
+  <div class="rating-group">
+    <span>Classroom Cleanliness</span>
+    <div class="star-rating">
+      <input type="radio" id="cc5" name="classroom_cleanliness" value="5"><label for="cc5">★</label>
+      <input type="radio" id="cc4" name="classroom_cleanliness" value="4"><label for="cc4">★</label>
+      <input type="radio" id="cc3" name="classroom_cleanliness" value="3"><label for="cc3">★</label>
+      <input type="radio" id="cc2" name="classroom_cleanliness" value="2"><label for="cc2">★</label>
+      <input type="radio" id="cc1" name="classroom_cleanliness" value="1"><label for="cc1">★</label>
+    </div>
+  </div>
+
+  <!-- Lab Facilities & Equipment -->
+  <div class="rating-group">
+    <span>Lab Facilities & Equipment</span>
+    <div class="star-rating">
+      <input type="radio" id="lf5" name="lab_facilities" value="5"><label for="lf5">★</label>
+      <input type="radio" id="lf4" name="lab_facilities" value="4"><label for="lf4">★</label>
+      <input type="radio" id="lf3" name="lab_facilities" value="3"><label for="lf3">★</label>
+      <input type="radio" id="lf2" name="lab_facilities" value="2"><label for="lf2">★</label>
+      <input type="radio" id="lf1" name="lab_facilities" value="1"><label for="lf1">★</label>
+    </div>
+  </div>
+
+  <!-- Library Resources -->
+  <div class="rating-group">
+    <span>Library Resources</span>
+    <div class="star-rating">
+      <input type="radio" id="lr5" name="library_resources" value="5"><label for="lr5">★</label>
+      <input type="radio" id="lr4" name="library_resources" value="4"><label for="lr4">★</label>
+      <input type="radio" id="lr3" name="library_resources" value="3"><label for="lr3">★</label>
+      <input type="radio" id="lr2" name="library_resources" value="2"><label for="lr2">★</label>
+      <input type="radio" id="lr1" name="library_resources" value="1"><label for="lr1">★</label>
+    </div>
+  </div>
+
+  <!-- Internet / Wi-Fi Availability -->
+  <div class="rating-group">
+    <span>Internet / Wi-Fi Availability</span>
+    <div class="star-rating">
+      <input type="radio" id="wf5" name="wifi_availability" value="5"><label for="wf5">★</label>
+      <input type="radio" id="wf4" name="wifi_availability" value="4"><label for="wf4">★</label>
+      <input type="radio" id="wf3" name="wifi_availability" value="3"><label for="wf3">★</label>
+      <input type="radio" id="wf2" name="wifi_availability" value="2"><label for="wf2">★</label>
+      <input type="radio" id="wf1" name="wifi_availability" value="1"><label for="wf1">★</label>
+    </div>
+  </div>
+
+  <!-- Washroom Cleanliness -->
+  <div class="rating-group">
+    <span>Washroom Cleanliness</span>
+    <div class="star-rating">
+      <input type="radio" id="wc5" name="washroom_cleanliness" value="5"><label for="wc5">★</label>
+      <input type="radio" id="wc4" name="washroom_cleanliness" value="4"><label for="wc4">★</label>
+      <input type="radio" id="wc3" name="washroom_cleanliness" value="3"><label for="wc3">★</label>
+      <input type="radio" id="wc2" name="washroom_cleanliness" value="2"><label for="wc2">★</label>
+      <input type="radio" id="wc1" name="washroom_cleanliness" value="1"><label for="wc1">★</label>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+    <!-- OPEN FEEDBACK -->
+    <div class="card">
+        <h3>💬 Open Feedback</h3>
+
+        <label>What did you like about this subject/faculty?</label>
+        <textarea name="liked" maxlength="500" placeholder="Maximum 500 characters"></textarea>
+
+        <label>What improvements are required?</label>
+        <textarea name="improvements" maxlength="500" placeholder="Maximum 500 characters"></textarea>
+
+        <label>Any suggestions to improve teaching or facilities?</label>
+        <textarea name="suggestions" maxlength="500" placeholder="Maximum 500 characters"></textarea>
+    </div>
+
+    <!-- DECLARATION -->
+    <div class="card">
+        <h3>🔐 Declaration</h3>
+        <div style="display:flex; align-items:center;">
+            <input type="checkbox" required style="margin-right:8px;">
+            <span>I confirm that this feedback is honest and submitted only once.</span>
+        </div>
+    </div>
+
+    <!-- FINAL SUBMIT -->
+    <div class="card center">
+        <button type="submit" class="submit-btn">Submit Feedback</button>
+        <p class="thank-you">Thank you! Your feedback helps improve teaching quality.</p>
+    </div>
+
+</div>
+</form>
+
+</body>
+</html>
+

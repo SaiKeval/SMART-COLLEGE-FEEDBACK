@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart College Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Smart College Feedback</h2>
+
+        <form action="/submit_feedback" method="POST">
+
+            <!-- Student Details -->
+            <label>Student Name</label>
+            <input type="text" name="name" required>
+
+            <label>Roll Number</label>
+            <input type="text" name="roll" required>
+
+            <label>Department</label>
+            <input type="text" name="department" required>
+
+            <label>Year</label>
+            <input type="text" name="year" required>
+
+            <label>Section</label>
+            <input type="text" name="section" required>
+
+            <label>Academic Year</label>
+            <input type="text" name="academic_year" required>
+
+            <label>Subject</label>
+            <input type="text" name="subject" required>
+
+            <label>Faculty Name</label>
+            <input type="text" name="faculty" required>
+
+
+            <!-- Ratings -->
+
+            <h3>Rate the Following</h3>
+
+            <label>Subject Knowledge</label>
+            <input type="number" name="subject_knowledge" min="1" max="5" required>
+
+            <label>Clarity</label>
+            <input type="number" name="clarity" min="1" max="5" required>
+
+            <label>Communication</label>
+            <input type="number" name="communication" min="1" max="5" required>
+
+            <label>Interaction</label>
+            <input type="number" name="interaction" min="1" max="5" required>
+
+            <label>Punctuality</label>
+            <input type="number" name="punctuality" min="1" max="5" required>
+
+
+            <!-- Comments -->
+            <label>Comments</label>
+            <textarea name="comments" rows="4"></textarea>
+
+
+            <!-- Declaration -->
+            <div class="declaration">
+                <input type="checkbox" id="declare" required>
+                <label for="declare">
+                    I hereby declare that the information provided above is true and correct.
+                </label>
+            </div>
+
+            <button type="submit">Submit Feedback</button>
+
+        </form>
+    </div>
+</body>
+</html>

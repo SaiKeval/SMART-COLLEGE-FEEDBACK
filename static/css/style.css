@@ -1,0 +1,250 @@
+body {
+    margin: 0;
+    background-color: #f4f7fb;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #1e3c72;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+/* CARD UI */
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #1e3c72;
+}
+
+/* INPUTS */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* CENTER BUTTON */
+.center {
+    text-align: center;
+}
+
+.submit-btn {
+    background-color: #1e3c72;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #16315e;
+}
+.stars {
+    margin-bottom: 15px;
+}
+
+.stars input {
+    margin-right: 5px;
+}
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+.thank-you {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+}
+.rating-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.rating-row span {
+    width: 40%;
+    font-weight: 500;
+}
+
+.stars {
+    width: 60%;
+}
+.stars label {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.stars input[type="radio"] {
+    margin-right: 4px;
+}
+/* ⭐ STAR RATING – FINAL FIX */
+
+  .star-rating {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 6px;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 26px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+  color: #f5b301;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: #f5b301;
+}
+.rating-box {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #0b3c8a;
+}
+
+.rating-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.rating-row span {
+    font-size: 16px;
+}
+
+.stars {
+    display: flex;
+    gap: 6px;
+}
+.rating-block {
+    margin-bottom: 25px;
+}
+
+.rating-block label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.stars {
+    display: flex;
+    gap: 6px;
+}
+/* ===== STAR RATING FIX ===== */
+
+.rating-block {
+    margin-bottom: 25px;
+}
+
+.rating-block label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.stars {
+    display: flex;
+    gap: 6px;
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label {
+    font-size: 22px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.stars input:checked ~ label {
+    color: #f5b301;
+}
+.rating-block label {
+    display: block;
+}
+.star-rating {
+    margin-bottom: 18px;
+}
+.rating-block {
+    margin-bottom: 22px;
+}
+/* Declaration checkbox alignment */
+.declaration {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.declaration input[type="checkbox"] {
+  margin: 0;
+}
+
+.declaration label {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+* {
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  display: inline-block !important;
+}
+
