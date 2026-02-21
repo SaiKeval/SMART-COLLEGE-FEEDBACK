@@ -16,6 +16,50 @@ def get_db_connection():
 def home():
     return render_template("index.html")
 
+from flask import session, redirect, url_for
+
+app.secret_key = "admin123"
+
+# =========================
+# ✅ STEP 2: ADMIN LOGIN ROUTE
+# =========================
+@app.route("/admin", methods=["GET", "POST"])
+def admin_login():
+
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if username == "admin" and password == "admin123":
+            session["admin"] = True
+            return redirect(url_for("admin_dashboard"))
+        else:
+            return render_template("admin_login.html", error="Invalid Credentials")
+
+    return render_template("admin_login.html")
+
+
+# =========================
+# ✅ STEP 3: ADMIN DASHBOARD ROUTE
+# =========================
+@app.route("/admin/dashboard")
+def admin_dashboard():
+
+    if not session.get("admin"):
+        return redirect(url_for("admin_login"))
+
+    db = get_db_connection()
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM feedback ORDER BY submitted_at DESC")
+    feedbacks = cursor.fetchall()
+
+    cursor.close()
+    db.close()
+
+    return render_template("admin_dashboard.html", feedbacks=feedbacks)
+
+
 @app.route("/submit_feedback", methods=["POST"])
 def submit_feedback():
 
@@ -34,10 +78,6 @@ def submit_feedback():
     subject = request.form.get("subject") or "N/A"
     faculty = request.form.get("faculty") or "N/A"
 
-    # =========================
-    # RATING SECTION
-    # =========================
-
     # Teaching Effectiveness
     subject_knowledge = int(request.form.get("subject_knowledge") or 0)
     clarity = int(request.form.get("clarity_explanation") or 0)
@@ -47,30 +87,30 @@ def submit_feedback():
     interaction = int(request.form.get("interaction_students") or 0)
     punctuality = int(request.form.get("approachability_support") or 0)
 
-    # =========================
-    # Infrastructure & Facilities  (STEP 4 ADDED)
-    # =========================
+    # Infrastructure & Facilities
     classroom_cleanliness = int(request.form.get("classroom_cleanliness") or 0)
     lab_facilities = int(request.form.get("lab_facilities") or 0)
     library_resources = int(request.form.get("library_resources") or 0)
     wifi_availability = int(request.form.get("wifi_availability") or 0)
     washroom_cleanliness = int(request.form.get("washroom_cleanliness") or 0)
 
-    # Overall Rating (same logic)
+    # Overall Rating
     rating = round(
         (subject_knowledge + clarity + communication +
          interaction + punctuality) / 5
     )
 
+    # Comments Section
     liked = request.form.get("liked") or ""
-improvements = request.form.get("improvements") or ""
-suggestions = request.form.get("suggestions") or ""
+    improvements = request.form.get("improvements") or ""
+    suggestions = request.form.get("suggestions") or ""
 
+    comments = f"""
+Liked: {liked}
+Improvements: {improvements}
+Suggestions: {suggestions}
+"""
 
-
-    # =========================
-    # UPDATED INSERT QUERY (STEP 2 FIXED)
-    # =========================
     query = """
         INSERT INTO feedback 
         (name, roll, department, year, section, academic_year,
@@ -106,3 +146,9 @@ suggestions = request.form.get("suggestions") or ""
                            subject=subject,
                            faculty=faculty,
                            rating=rating)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
